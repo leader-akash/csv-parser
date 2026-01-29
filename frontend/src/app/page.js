@@ -201,6 +201,9 @@ export default function UploadPage() {
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Supports files with 10,000+ rows
               </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Max file size: 1000MB
+              </p>
             </label>
           )}
         </div>

@@ -11,6 +11,7 @@ export default function UploadPage() {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
   const router = useRouter();
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000"; 
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -101,7 +102,7 @@ export default function UploadPage() {
         setUploading(false);
       };
 
-      xhr.open("POST", "http://localhost:5000/api/upload");
+      xhr.open("POST", backendUrl + "/api/upload");
       xhr.send(formData);
     } catch (err) {
       setError(err.message || "Something went wrong");
@@ -200,6 +201,9 @@ export default function UploadPage() {
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Supports files with 10,000+ rows
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Max file size: 1000MB
               </p>
             </label>
           )}

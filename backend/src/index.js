@@ -6,11 +6,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://csv-parser-fe.vercel.app'],
   credentials: true
 }));
 
 app.use(express.json());
+
+app.use("/", (req, res) => {
+  res.json({ status: 'ok', message: 'Api is running' });
+});
 
 app.use('/api', uploadRouter);
 
@@ -27,5 +31,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on ${PORT}`);
 });

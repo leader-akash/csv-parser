@@ -29,7 +29,7 @@ const handleUpload = (req, res, next) => {
       if (err.code === 'LIMIT_FILE_SIZE') {
         return res.status(413).json({
           success: false,
-          message: 'File too large. Maximum size is 100MB.'
+          message: 'File too large. Maximum size is 1000MB.'
         });
       }
       return res.status(400).json({
